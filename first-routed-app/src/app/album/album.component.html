@@ -1,1 +1,21 @@
-<p>album works!</p>
+<div *ngIf="album">
+
+  <div class="col-sm-6 col-md-6">
+    <div class="thumbnail">
+      <h1>{{album.name}}</h1>
+
+      <div style="text-align: center">
+        <img src="{{ album.images[1].url }}">
+      </div>
+      <h3>
+        <strong>Album release date: {{album.release_date}}, popularity: {{album.popularity}}</strong>
+      </h3>
+      <div *ngFor="let tr of album.tracks.items">
+        <hr>
+        <h2>{{tr.track_number}}, <a [routerLink]="['/tracks', tr.id]">{{tr.name}}</a></h2>
+        <audio controls src="{{tr.preview_url}}"></audio>
+      </div>
+      <h2 class="text-center"> <a href (click)="back()">Back</a> </h2>
+    </div>
+  </div>
+</div>

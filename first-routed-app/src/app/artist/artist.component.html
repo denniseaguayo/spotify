@@ -1,3 +1,28 @@
 <div *ngIf="artist">
-   {{artist | json}}
+  <div class="col-sm-6 col-md-6">
+    <div class="thumbnail">
+      <h1 class="text-center">{{ artist.name }}</h1>
+      <div style="text-align: center">
+        <img src="{{ artist.images[1].url }}">
+      </div>
+      <h3>
+        <strong>Number of followers: {{artist.followers.total}}</strong>
+      </h3>
+
+      <h3>Genres:
+        <div *ngFor="let b of artist.genres">
+          <ul>
+            <li>{{b}}</li>
+          </ul>
+        </div>
+      </h3>
+
+      <h3 class="text-secondary">
+        Popularity: {{artist.popularity}}
+      </h3>
+
+      <a type="button" class="btn btn-primary" [routerLink]="['/allAlbum', artist.id]">View all albums</a>
+      <h2 class="text-center"> <a href (click)="back()">Back</a> </h2>
+    </div>
+  </div>
 </div>

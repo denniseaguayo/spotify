@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ParamMap, ActivatedRoute } from '@angular/router';
 import { SpotifyService } from '../spotify.service';
-import {Location} from '@angular/common';
 
 @Component({
-  selector: 'app-artist',
-  templateUrl: './artist.component.html',
-  styleUrls: ['./artist.component.css']
+  selector: 'app-all-album',
+  templateUrl: './all-album.component.html',
+  styleUrls: ['./all-album.component.css']
 })
-export class ArtistComponent implements OnInit {
+export class AllAlbumComponent implements OnInit {
   routeObs: Observable<ParamMap>;
 
-  artist : any;
+  album : any;
 
   spotifyServiceObs: any;
 
@@ -30,10 +29,10 @@ export class ArtistComponent implements OnInit {
 
   getRouterParam = (params: ParamMap) =>
   {
-    let artistId = params.get('id');
-    console.log (artistId);
-    this.spotifyServiceObs = this.service.getArtist(artistId) ;
-    this.spotifyServiceObs.subscribe((data)=>this.artist = data)
+    let artistAId = params.get('id');
+    console.log (artistAId);
+    this.spotifyServiceObs = this.service.getAlbum2(artistAId) ;
+    this.spotifyServiceObs.subscribe((data)=>this.album = data)
   }
 
 
@@ -44,4 +43,3 @@ export class ArtistComponent implements OnInit {
   }
 
 }
-
